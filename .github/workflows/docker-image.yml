@@ -17,6 +17,7 @@ jobs:
     - name: Docker login
       uses: docker/login-action@v2
       with:
+        registry: docker.io
         username: docker.io
         password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
     - name: Build and push Docker images
