@@ -27,3 +27,5 @@ jobs:
         push: True
         # List of tags
         tags: npghantasala/test-actions-nginx:test1
+        username: docker.io
+        password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
