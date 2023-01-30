@@ -26,4 +26,4 @@ jobs:
         # Push is a shorthand for --output=type=registry
         push: True
         # List of tags
-        tags: test1
+        tags: npghantasala/test-actions-nginx:test1
