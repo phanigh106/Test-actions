@@ -17,15 +17,11 @@ jobs:
       run: |
             commit_msg="${{ github.event.head_commit.message }}"
             echo $commit_msg
-            VAR_VALUE ="$(echo $commit_msg | grep -oP "(?<=$VAR_NAME: )\W+")"
+            VAR_VALUE =$(echo $COMMIT_MESSAGE | grep -oP "(?<=$VAR_NAME: )\w+")
 
   echoing:
     runs-on: ubuntu-latest
     steps:
     - name: echo variable
       run: |
-           echo $VAR_NAME : $VAR_VALUE
-           echo "::set-env name=$VAR_NAME::$VAR_VALUE
-  
-    
-  
+           echo $VAR_VALUE
