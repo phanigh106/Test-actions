@@ -1,26 +1,25 @@
-name: Display commit message
+name: Extract Variable from Commit Message
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
+
 env:
-  VAR_NAME : ''
-  VAR_VALUE : ''
+  VAR_NAME: ''
 
 jobs:
-  pull-version:
+  extract-variable:
     runs-on: ubuntu-latest
+    
     steps:
-    - name: pull commit message
+    - name: Get Commit Message
       run: |
-            commit_msg="${{ github.event.head_commit.message }}"
-            echo $commit_msg
-            VAR_VALUE ="$(echo $COMMIT_MESSAGE | grep -oP "(?<=$VAR_NAME: )\w+")"
+        COMMIT_MESSAGE=$(git log -1 HEAD --pretty=format:%B)
+        echo "Commit Message: $COMMIT_MESSAGE"
 
-  echoing:
-    runs-on: ubuntu-latest
-    steps:
-    - name: echo variable
-      run: echo "$VAR_VALUE"
+    - name: Extract Variable
+      run: |
+        VAR_VALUE=$(echo $COMMIT_MESSAGE | grep -oP "(?<=$VAR_NAME: )\w+")
+        echo "Variable $VAR_NAME: $VAR_VALUE"
+        echo "::set-env name=$VAR_NAME::$VAR_VALUE"
