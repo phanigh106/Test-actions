@@ -5,17 +5,27 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+env:
+  VAR_NAME : ''
+  VAR_VALUE : ''
 
 jobs:
+  pull-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: pull commit message
+      run: |
+            commit_msg = ${{ github.event.head_commit.message }}
+            echo $commit_msg
+            VAR_VALUE =$(echo $commit_msg | grep -oP "(?<=$VAR_NAME: )\W+")       
+
   echoing:
     runs-on: ubuntu-latest
     steps:
-    - name: echo commit message
+    - name: echo variable
       run: |
-            echo "hello there message is ${{ github.event.head_commit.message }}"
-            echo $version
-      env:
-        version: ${{ github.event.head_commit.message |awk '{print $4}' }} 
-
+           echo $VAR_NAME : $VAR_VALUE
+           echo "::set-env name=$VAR_NAME::$VAR_VALUE
+  
     
   
