@@ -1,17 +1,16 @@
-name: Greeting on variable day
+name: test grep from commit message
 on: 
   push
 env:
-  DAY_OF_WEEK: Monday
+  VALUE : ''
 
 jobs:
-  greeting_job:
+  pull-commit-message:
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
     steps:
-      - name: "Say Hello phani it's Monday"
-        if: ${{ env.DAY_OF_WEEK == 'Monday' }}
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-        env:
-          First_Name: phani
+      - name: "test pull commit message"
+        run: |
+              echo "${{ event.head_commit.message }}"
+              commit_msg=${{ event.head_commit.message }}
+              VALUE=$(echo $commit_msg|grep -o [0-9])
+        
