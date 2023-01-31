@@ -1,1 +1,17 @@
+name: Display commit message
 
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  echoing:
+    runs-on: ubuntu-latest
+    steps:
+    - name: echo commit message
+      run: echo "hello there message is ${{ github.event.commit_head.message }}"
+
+    
+  
