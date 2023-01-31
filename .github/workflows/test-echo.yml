@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: pull commit message
       run: |
-            commit_msg = ${{ github.event.head_commit.message }}
+            COMMIT_MSG=${{ github.event.head_commit.message }}
             echo "drdewewewq"
 
     
