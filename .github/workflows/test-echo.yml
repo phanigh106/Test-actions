@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: echo commit message
-      run: echo "hello there message is ${{ github.event.head_commit.message }}"
+      run: |
+            echo "hello there message is ${{ github.event.head_commit.message }}"
+            echo $version
+      env:
+        version: ${{ github.event.head_commit.message |awk '{print $4}' }} 
 
     
   
