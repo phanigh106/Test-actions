@@ -1,6 +1,6 @@
 name: test grep from commit message
 on: 
-  push
+  workflow_dispatch
 env:
   VALUE : ''
 
@@ -14,4 +14,8 @@ jobs:
               commit_msg="${{ github.event.head_commit.message }}"
               VALUE=$(echo $commit_msg|grep -o '\b\w*[0-9.]\w*\b')
               echo $VALUE
+      - name: "read file contents"
+        run: |
+             echo $(cat files/note.txt)
+          
         
