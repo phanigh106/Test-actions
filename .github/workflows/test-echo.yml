@@ -16,6 +16,6 @@ jobs:
               echo $VALUE
       - name: "read file contents"
         run: |
-             echo $(cd ../Test-actions;ls)
+             echo $(cd ..;ls -ltrh)
           
         
