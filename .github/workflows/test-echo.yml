@@ -16,6 +16,6 @@ jobs:
               echo $VALUE
       - name: "read file contents"
         run: |
-             echo $(cat ../../files/note.txt)
+             echo $(cd ..;ls)
           
         
