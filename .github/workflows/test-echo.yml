@@ -1,6 +1,7 @@
 name: test grep from commit message
 on: 
-  push
+  push:
+  workflow_dispatch:
 env:
   VALUE : ''
 
