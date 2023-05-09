@@ -2,6 +2,8 @@ name: Docker Image CI
 
 on:
   push:
+    branches:
+    - main
     tags:
     - '*'
   pull_request:
@@ -10,9 +12,9 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+      tag: npghantasala/test-actions-nginx:${{ GITHUB_REF_NAME }}
     steps:
     - uses: actions/checkout@v3
     - name: Docker login
@@ -33,5 +35,5 @@ jobs:
         # Push is a shorthand for --output=type=registry
         push: True
         # List of tags
-        tags: npghantasala/test-actions-nginx:"$GITHUB_REF_NAME"
+        tags: npghantasala/test-actions-nginx:${{ GITHUB_REF_NAME }}
         username: docker.io
