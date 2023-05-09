@@ -7,16 +7,13 @@ on:
         default: 'demo'
         required: false
         
-env:
-  VALUE : ${{ github.event.inputs.testvar }}
-
 jobs:
   pull-commit-message:
     runs-on: ubuntu-latest
     steps:
       - name: "test message"
         run: |
-              echo $VALUE
+              echo "${{ github.event.inputs.testvar }}"
       - uses: actions/checkout@v3
       - name: "read file contents"
         run: |
