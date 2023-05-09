@@ -33,5 +33,5 @@ jobs:
         # Push is a shorthand for --output=type=registry
         push: True
         # List of tags
-        tags: npghantasala/test-actions-nginx:$GITHUB_REF_NAME
+        tags: npghantasala/test-actions-nginx:"$GITHUB_REF_NAME"
         username: docker.io
