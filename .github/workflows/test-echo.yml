@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: "test message"
         run: |
-              echo "${{ github.event.inputs.testvar }}"
+              echo "${{ github.event.inputs.VALUE }}"
       - uses: actions/checkout@v3
       - name: "read file contents"
         run: |
