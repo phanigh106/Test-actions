@@ -2,8 +2,13 @@ name: test grep from commit message
 on: 
   push:
   workflow_dispatch:
+    inputs:
+      VALUE:
+        default: 'demo'
+        required: false
+        
 env:
-  VALUE : ${{ vars.testvar }}
+  VALUE : ${{ github.event.inputs.testvar }}
 
 jobs:
   pull-commit-message:
