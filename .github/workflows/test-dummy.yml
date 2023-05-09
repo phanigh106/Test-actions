@@ -1,0 +1,15 @@
+name: test grep from commit message
+on: 
+  push:
+    branches:
+    - v*
+  workflow_dispatch:
+jobs:
+  pull-commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "read file contents"
+        run: |
+             echo $(cat files/note.txt)
+             
