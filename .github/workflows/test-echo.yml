@@ -3,17 +3,14 @@ on:
   push:
   workflow_dispatch:
 env:
-  VALUE : ''
+  VALUE : ${{ vars.testvar }}
 
 jobs:
   pull-commit-message:
     runs-on: ubuntu-latest
     steps:
-      - name: "test pull commit message"
+      - name: "test message"
         run: |
-              echo ${{ github.event.head_commit.message }}
-              commit_msg="${{ github.event.head_commit.message }}"
-              VALUE=$(echo $commit_msg|grep -o '\b\w*[0-9.]\w*\b')
               echo $VALUE
       - uses: actions/checkout@v3
       - name: "read file contents"
