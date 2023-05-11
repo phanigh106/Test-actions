@@ -1,6 +1,5 @@
 name: test grep from commit message
 on: 
-  push:
   workflow_dispatch:
     inputs:
       VALUE:
@@ -8,9 +7,9 @@ on:
         default: 'demo'
         required: false
       LOAD_PROFILE:
-        type: boolean
+        type: string
         description: select if needed
-        default: false
+        default: "false"
         required: true
         
 jobs:
