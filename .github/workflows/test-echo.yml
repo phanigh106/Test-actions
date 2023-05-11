@@ -1,5 +1,6 @@
 name: test grep from commit message
 on: 
+  push:
   workflow_dispatch:
     inputs:
       VALUE:
@@ -24,7 +25,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: "read file contents"
-        if: ${{ fromJson(github.event.inputs.LOAD_PROFILE) }}
+        if: ${{ fromJSON(github.event.inputs.LOAD_PROFILE) }}
         run: |
              echo $(cat files/note.txt)
   job2:
