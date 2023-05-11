@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       VALUE:
-        type: string
+        type: boolean
         default: 'demo'
         required: false
       LOAD_PROFILE:
