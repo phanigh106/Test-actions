@@ -9,7 +9,7 @@ on:
       LOAD_PROFILE:
         type: boolean
         description: select if needed
-        default: "false"
+        default: false
         required: true
         
 jobs:
