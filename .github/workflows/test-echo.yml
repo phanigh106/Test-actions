@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
     - pull-commit-message
-    if: needs.pull-commit-message.result == "failure"
+    if: needs.pull-commit-message.result == 'failure'
     steps:
     - name: job2 echo
       run: echo "from job2"
