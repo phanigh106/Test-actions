@@ -7,6 +7,11 @@ on:
         type: string
         default: 'demo'
         required: false
+      LOAD_PROFILE:
+        type: boolean
+        description: select if needed
+        default: false
+        required: true
         
 jobs:
   pull-commit-message:
@@ -17,6 +22,7 @@ jobs:
               echo "${{ github.event.inputs.VALUE }}"
       - uses: actions/checkout@v3
       - name: "read file contents"
+        if: ${{ github.event.inputs.LOAD_PROFILE }}
         run: |
              echo $(cat files/note.txt)
              
