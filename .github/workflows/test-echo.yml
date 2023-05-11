@@ -25,6 +25,12 @@ jobs:
         if: ${{ fromJSON(github.event.inputs.LOAD_PROFILE) }}
         run: |
              echo $(cat files/note.txt)
-             
+  job2:
+    runs-on: ubuntu-latest
+    needs:
+    - pull-commit-message
+    steps:
+    - name: job2 echo
+      run: echo "from job2"
           
         
