@@ -35,6 +35,6 @@ jobs:
 #     if: needs.pull-commit-message.result == "failure"
     steps:
     - name: job2 echo
-      run: echo ${{ jobs.pull-commit-message.result }}
+      run: echo ${{ needs.pull-commit-message.result }}
           
         
