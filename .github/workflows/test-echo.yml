@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: "read file contents"
-        if: ${{ github.event.inputs.LOAD_PROFILE }}
+        if: ${{ fromJson(github.event.inputs.LOAD_PROFILE) }}
         run: |
              echo $(cat files/note.txt)
   job2:
