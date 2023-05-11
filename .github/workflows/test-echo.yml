@@ -8,7 +8,7 @@ on:
         required: false
       LOAD_PROFILE:
         type: boolean
-        description: select if needed
+        description: LOAD_PROFILE
         default: false
         required: true
         
@@ -19,7 +19,10 @@ jobs:
       - name: "test message"
         run: |
               echo "${{ github.event.inputs.VALUE }}"
+              echo "${{ github.event.inputs.LOAD_PROFILE }}"
+              
       - uses: actions/checkout@v3
+      
       - name: "read file contents"
         if: ${{ fromJSON(github.event.inputs.LOAD_PROFILE) }}
         run: |
