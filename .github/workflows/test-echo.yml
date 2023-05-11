@@ -1,6 +1,5 @@
 name: test grep from commit message
 on: 
-  push:
   workflow_dispatch:
     inputs:
       VALUE:
@@ -53,7 +52,7 @@ jobs:
        needs.job2.result == 'success'
     steps:
     - name: dummy echo
-      run: echo $${{ github.event.inputs.name }}
+      run: echo ${{ github.event.inputs.name }}
        
  
           
