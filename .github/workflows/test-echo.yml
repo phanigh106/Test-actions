@@ -3,11 +3,11 @@ on:
   workflow_dispatch:
     inputs:
       VALUE:
-        type: boolean
+        type: string
         default: 'demo'
         required: false
       LOAD_PROFILE:
-        type: string
+        type: boolean
         description: select if needed
         default: "false"
         required: true
