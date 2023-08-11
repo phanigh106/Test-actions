@@ -20,6 +20,7 @@ jobs:
       - name: "read file contents"
         run: |
              echo $(cat files/note.txt)
+             echo "${{ github.event_name }}"
              
           
         
