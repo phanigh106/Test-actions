@@ -2,6 +2,12 @@ name: test
 on: 
   push:
   workflow_dispatch:
+    inputs:
+      BUILD_IMAGES:
+        type: boolean
+        description: Build docker Images
+        default: false
+        required: true
 env:
   VALUE : ''
 
@@ -11,6 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "read file contents"
+        if: ${{ github.event_name == 'push' && true || fromJSON(github.event.inputs.BUILD_IMAGES) }}
         run: |
              echo $(cat files/note.txt)
              echo "${{ github.event_name }}"
