@@ -12,4 +12,5 @@ jobs:
       - name: "read file contents"
         run: |
              echo $(cat files/note.txt)
+             echo "my-user=$GITHUB_ACTOR" >> "$GITHUB_OUTPUT"
              
