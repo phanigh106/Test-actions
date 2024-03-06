@@ -14,6 +14,12 @@ jobs:
         run: |
              echo $(cat files/note.txt)
              echo "${{ github.event_name }}"
+      - name: Geneate token for dev authentication
+        run: |
+             echo "dev_auth_token=$(echo -n `dd bs=512 if=/dev/urandom count=1 2>/dev/null | LC_ALL=C tr -dc "a-zA-Z0-9" | head -c 16`)"
+             echo "dev-auth-token=$dev_auth_token">>$GITHUB_ENV
+      - name: echo again
+        run: echo ${{ env.dev-auth-token }}
              
           
         
